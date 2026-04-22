@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BN Pooja — Product Manager & Agentic AI Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:      #0D0E14;
+    --paper:    #F8F6F1;
+    --cream:    #F0EDE6;
+    --accent:   #1A3A5C;
+    --gold:     #C09A4A;
+    --mid:      #6B7280;
+    --light:    #D4CFC6;
+    --white:    #FFFFFF;
+    --serif:    'DM Serif Display', Georgia, serif;
+    --sans:     'DM Sans', system-ui, sans-serif;
+    --mono:     'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(248,246,241,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--light);
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.2rem; color: var(--accent);
+    letter-spacing: 0.03em; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+  .hero-left {
+    padding: 6rem 3rem 4rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.72rem;
+    color: var(--gold); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero-tag::before {
+    content: ''; width: 24px; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: var(--serif); font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.05; color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: italic; color: var(--accent); display: block;
+  }
+  .hero-subtitle {
+    font-size: 1rem; font-weight: 300; color: var(--mid);
+    margin: 1.5rem 0 2.5rem; max-width: 420px; line-height: 1.8;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.8rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #0f2438; transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid var(--accent); color: var(--accent);
+    padding: 0.75rem 1.8rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    padding-top: 2rem; border-top: 1px solid var(--light);
+  }
+  .stat-num { font-family: var(--serif); font-size: 2.2rem; color: var(--accent); }
+  .stat-label { font-size: 0.75rem; color: var(--mid); letter-spacing: 0.05em; }
+
+  .hero-right {
+    background: var(--accent);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 3rem;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: -30%; right: -20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(192,154,74,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute; bottom: 10%; left: -10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-big-text {
+    font-family: var(--serif); font-size: clamp(5rem, 9vw, 9rem);
+    line-height: 0.9; color: rgba(255,255,255,0.08);
+    user-select: none; position: absolute; bottom: 2rem; right: -1rem;
+    font-style: italic;
+  }
+  .hero-card {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px; padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+  .hero-card-title {
+    font-family: var(--mono); font-size: 0.7rem;
+    color: var(--gold); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .highlight-item:last-child { border-bottom: none; }
+  .highlight-num {
+    font-family: var(--serif); font-size: 1.6rem;
+    color: var(--gold); min-width: 3rem; line-height: 1;
+  }
+  .highlight-text { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  /* ── SECTION SHELL ── */
+  section { padding: 6rem 3rem; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-kicker {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-kicker::after { content: ''; flex: 1; max-width: 48px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--ink); line-height: 1.15;
+  }
+  .container { max-width: 1140px; margin: 0 auto; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-body p { color: var(--mid); margin-bottom: 1.2rem; font-weight: 300; font-size: 0.98rem; }
+  .about-body p strong { color: var(--ink); font-weight: 600; }
+
+  .edu-list { margin-top: 2.5rem; }
+  .edu-item {
+    padding: 1.5rem 0; border-bottom: 1px solid var(--cream);
+    display: grid; grid-template-columns: 4rem 1fr; gap: 1.2rem;
+  }
+  .edu-year {
+    font-family: var(--mono); font-size: 0.7rem;
+    color: var(--gold); padding-top: 0.2rem; line-height: 1.4;
+  }
+  .edu-degree { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .edu-school { font-size: 0.83rem; color: var(--mid); }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--paper); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .project-card {
+    background: var(--white);
+    padding: 2.2rem;
+    position: relative; overflow: hidden;
+    cursor: default;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); z-index: 2; }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-type {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+  }
+  .project-title { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 0.75rem; line-height: 1.2; }
+  .project-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .project-metrics {
+    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    padding: 1rem; background: var(--cream); border-radius: 2px;
+  }
+  .metric { text-align: center; flex: 1; min-width: 60px; }
+  .metric-val { font-family: var(--serif); font-size: 1.3rem; color: var(--accent); }
+  .metric-label { font-size: 0.65rem; color: var(--mid); letter-spacing: 0.05em; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: var(--mono); font-size: 0.62rem;
+    background: var(--cream); color: var(--accent);
+    padding: 0.25rem 0.6rem; border-radius: 1px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--white); }
+  .exp-timeline { position: relative; padding-left: 2rem; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+    width: 1px; background: var(--light);
+  }
+  .exp-item { position: relative; padding-bottom: 3rem; }
+  .exp-dot {
+    position: absolute; left: -2.4rem; top: 0.35rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--paper);
+    box-shadow: 0 0 0 3px rgba(26,58,92,0.15);
+  }
+  .exp-meta {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 0.3rem;
+  }
+  .exp-role { font-weight: 700; font-size: 1rem; }
+  .exp-period {
+    font-family: var(--mono); font-size: 0.7rem;
+    color: var(--gold); letter-spacing: 0.05em;
+  }
+  .exp-company { font-size: 0.85rem; color: var(--mid); margin-bottom: 1rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.88rem; color: var(--mid); padding: 0.3rem 0 0.3rem 1.2rem;
+    position: relative; line-height: 1.6;
+  }
+  .exp-bullets li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--gold); font-size: 0.75rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--ink); color: var(--paper); }
+  #skills .section-title { color: var(--paper); }
+  #skills .section-kicker { color: var(--gold); }
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .skill-group-title {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .skill-item { margin-bottom: 1rem; }
+  .skill-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+  .skill-name { font-size: 0.82rem; color: rgba(255,255,255,0.8); }
+  .skill-level { font-family: var(--mono); font-size: 0.65rem; color: var(--gold); }
+  .skill-bar { height: 2px; background: rgba(255,255,255,0.1); border-radius: 1px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--gold); border-radius: 1px; }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--cream); }
+  .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .cert-card {
+    background: var(--white); padding: 2rem;
+    transition: transform 0.2s;
+  }
+  .cert-card:hover { transform: translateY(-2px); }
+  .cert-issuer {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .cert-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; line-height: 1.4; }
+  .cert-date { font-size: 0.78rem; color: var(--mid); margin-bottom: 1rem; }
+  .cert-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.6; margin-bottom: 1.2rem; }
+  .cert-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid var(--accent); padding-bottom: 1px;
+    transition: opacity 0.2s;
+  }
+  .cert-link:hover { opacity: 0.6; }
+  .cert-badge {
+    display: inline-block; font-family: var(--mono); font-size: 0.6rem;
+    padding: 0.2rem 0.5rem; border-radius: 2px; margin-bottom: 0.5rem;
+  }
+  .badge-done { background: #e8f5e9; color: #2e7d32; }
+  .badge-progress { background: #fff8e1; color: #f9a825; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--accent); color: var(--paper);
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding: 0; min-height: 50vh;
+  }
+  .contact-left {
+    padding: 6rem 3rem 6rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-right {
+    padding: 6rem 3rem;
+    background: rgba(0,0,0,0.15);
+    display: flex; flex-direction: column; justify-content: center; gap: 2rem;
+  }
+  #contact .section-kicker { color: var(--gold); }
+  #contact .section-title { color: var(--paper); margin-bottom: 1.5rem; }
+  .contact-body { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.8; max-width: 380px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none; color: rgba(255,255,255,0.85);
+    padding: 1.2rem 1.5rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.12); transform: translateX(4px); }
+  .contact-link-icon { font-size: 1.3rem; }
+  .contact-link-text { font-size: 0.82rem; }
+  .contact-link-label {
+    font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 1.5rem;
+    background: var(--ink); color: rgba(255,255,255,0.3);
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+  .fade-up:nth-child(5) { transition-delay: 0.4s; }
+  .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">BN Pooja</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Product Manager &amp; Agentic AI Specialist</div>
+    <h1 class="hero-name">BN<em>Pooja.</em></h1>
+    <p class="hero-subtitle">
+      Building intelligent products at the intersection of <strong>AI automation</strong>, <strong>data strategy</strong>, and <strong>user empathy</strong>. Completed Product Management &amp; Agentic AI certification from IIT Patna.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Internships</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div>
+        <div class="stat-num">8.77</div>
+        <div class="stat-label">CGPA</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-big-text">PM</div>
+    <div class="hero-card">
+      <div class="hero-card-title">// Key Achievements</div>
+      <div class="highlight-item">
+        <div class="highlight-num">60%</div>
+        <div class="highlight-text">Time saved via 5-agent N8N AI automation workflow with 85% output accuracy</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">35%</div>
+        <div class="highlight-text">Scope creep reduction through pre-development wireframe validation on Campus Connect</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">82%</div>
+        <div class="highlight-text">Sentiment model accuracy built during internship, informing feature prioritisation</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">30%</div>
+        <div class="highlight-text">Reduction in manual processing time via automated ETL pipeline</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">About Me</div>
+      <h2 class="section-title">Product thinking<br/><em style="font-family:var(--serif);font-style:italic;color:var(--accent)">backed by data</em></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          Pooja brings a rare blend of <strong>product strategy</strong> and <strong>technical depth</strong>. A B.Tech in Electronics &amp; Communication Engineering from CMR University (8.77 CGPA) provides the analytical foundation, complemented by a completed certification in Product Management &amp; Agentic AI from IIT Patna.
+        </p>
+        <p>
+          The focus is always on <strong>measurable impact</strong> — not just shipping features, but validating them with metrics. From building multi-agent N8N workflows to conducting 40+ user interviews, every project connects user empathy to business outcomes.
+        </p>
+        <p>
+          Currently exploring the frontier of <strong>LLM-powered products</strong>, RAG pipelines, and GenAI UX design — translating bleeding-edge AI capabilities into real-world solutions that solve real problems for real people.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="https://linkedin.com/in/b-n-pooja-13279b280/" target="_blank" class="btn-primary" style="display:inline-block;margin-right:0.75rem;">LinkedIn</a>
+          <a href="mailto:bnpooja12@gmail.com" class="btn-outline" style="display:inline-block;">Email</a>
+        </div>
+      </div>
+      <div>
+        <div class="edu-list">
+          <div class="edu-item fade-up">
+            <div class="edu-year">2025–<br/>2027</div>
+            <div>
+              <div class="edu-degree">MBA — Product Management</div>
+              <div class="edu-school">Manipal University, Jaipur &nbsp;·&nbsp; In Progress</div>
+            </div>
+          </div>
+          <div class="edu-item fade-up">
+            <div class="edu-year">2025–<br/>2026</div>
+            <div>
+              <div class="edu-degree">Product Management & Agentic AI</div>
+              <div class="edu-school">IIT Patna (by Masai) &nbsp;·&nbsp; Completed &nbsp;·&nbsp; CGPA 8.3 / 10</div>
+            </div>
+          </div>
+          <div class="edu-item fade-up">
+            <div class="edu-year">2020–<br/>2024</div>
+            <div>
+              <div class="edu-degree">B.Tech — Electronics &amp; Communication</div>
+              <div class="edu-school">CMR University &nbsp;·&nbsp; CGPA 8.77 / 10 (Distinction)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Work</div>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-type">AI Product &nbsp;·&nbsp; Product Lead</div>
+        <h3 class="project-title">AI-Powered Resume Screening Agent</h3>
+        <p class="project-desc">End-to-end agentic prototype addressing high-volume resume screening inefficiency in HR tech. Built investor-grade pitch deck, UX wireframes, and N8N multi-agent backend delivering structured hire/hold/reject recommendations.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">0–100</div><div class="metric-label">Fit Score</div></div>
+          <div class="metric"><div class="metric-val">3</div><div class="metric-label">Outputs</div></div>
+          <div class="metric"><div class="metric-val">5yr</div><div class="metric-label">Financial Model</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">N8N</span><span class="tag">LLM</span><span class="tag">Figma</span><span class="tag">Lovable</span><span class="tag">Multi-Agent</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-type">Product Management &nbsp;·&nbsp; Product Lead</div>
+        <h3 class="project-title">Campus Connect</h3>
+        <p class="project-desc">AI-driven study group platform built from 40+ user interviews. Delivered full PRD, user stories with acceptance criteria, A/B testing framework, and AARRR metrics — reducing scope creep by 35%.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">40+</div><div class="metric-label">Interviews</div></div>
+          <div class="metric"><div class="metric-val">35%</div><div class="metric-label">Scope Creep ↓</div></div>
+          <div class="metric"><div class="metric-val">70%</div><div class="metric-label">Match Target</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Figma</span><span class="tag">PRD</span><span class="tag">AARRR</span><span class="tag">A/B Testing</span><span class="tag">User Research</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-type">AI Engineering &nbsp;·&nbsp; Automation</div>
+        <h3 class="project-title">Multi-Agent Workflow System</h3>
+        <p class="project-desc">Production-ready 5-agent N8N system for automated product ideation and prioritisation. Sequential pipelines with conditional branching, RAG-powered LLM, Google Sheets integration, and KPI framework across quality and efficiency.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">5</div><div class="metric-label">AI Agents</div></div>
+          <div class="metric"><div class="metric-val">60%</div><div class="metric-label">Time Saved</div></div>
+          <div class="metric"><div class="metric-val">25%</div><div class="metric-label">Quality ↑</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">N8N</span><span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">Gemini</span><span class="tag">Prompt Eng.</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-type">Data Analytics</div>
+        <h3 class="project-title">Sales Data Visualisation</h3>
+        <p class="project-desc">Advanced analysis of 10,000+ sales records in Excel and Power BI. Identified revenue trends, seasonality patterns, and product performance insights that surfaced a 15% revenue opportunity.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">10K+</div><div class="metric-label">Records</div></div>
+          <div class="metric"><div class="metric-val">40%</div><div class="metric-label">Report Time ↓</div></div>
+          <div class="metric"><div class="metric-val">15%</div><div class="metric-label">Revenue Opp.</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">KPIs</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-type">Cloud Architecture</div>
+        <h3 class="project-title">AWS Multi-Tier Cloud Architecture</h3>
+        <p class="project-desc">Designed and deployed scalable AWS infrastructure using EC2, VPC, IAM, ELB, and Auto Scaling to support analytics workloads with 99.9% uptime SLA.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">99.9%</div><div class="metric-label">Uptime</div></div>
+          <div class="metric"><div class="metric-val">Multi</div><div class="metric-label">Tier Arch</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">AWS EC2</span><span class="tag">VPC</span><span class="tag">IAM</span><span class="tag">ELB</span><span class="tag">Auto Scaling</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-type">DevOps &nbsp;·&nbsp; Automation</div>
+        <h3 class="project-title">System Monitoring & Analytics</h3>
+        <p class="project-desc">Linux-based monitoring system with automated shell scripts for logging, alerting, and log analysis improving operational efficiency by 20% with 24/7 coverage.</p>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">20%</div><div class="metric-label">Efficiency ↑</div></div>
+          <div class="metric"><div class="metric-val">24/7</div><div class="metric-label">Monitoring</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Linux</span><span class="tag">Shell</span><span class="tag">Automation</span><span class="tag">Log Analysis</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Career</div>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item fade-up">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <div class="exp-role">Engineering Intern</div>
+          <div class="exp-period">Mar 2024 – May 2024</div>
+        </div>
+        <div class="exp-company">Meritas &nbsp;·&nbsp; Bengaluru</div>
+        <ul class="exp-bullets">
+          <li>Analysed user behaviour on healthcare datasets using Python (Pandas, NumPy) and EDA; translated findings into actionable product improvement recommendations for cross-functional stakeholders.</li>
+          <li>Built NLP-based sentiment classification model achieving 82% accuracy; defined product metrics and KPIs tied to business goals, informing feature prioritisation.</li>
+          <li>Automated data processing pipelines improving data quality by 25% and reducing analysis time significantly.</li>
+          <li>Conducted competitive benchmarking to inform feature strategy; collaborated in Agile sprints for analytics-driven features.</li>
+        </ul>
+      </div>
+      <div class="exp-item fade-up">
+        <div class="exp-dot"></div>
+        <div class="exp-meta">
+          <div class="exp-role">Python Development Intern</div>
+          <div class="exp-period">Jan 2024 – Feb 2024</div>
+        </div>
+        <div class="exp-company">InternPe &nbsp;·&nbsp; Remote</div>
+        <ul class="exp-bullets">
+          <li>Designed and automated ETL pipelines for data preprocessing using Python, reducing manual processing time by 30% and improving downstream analytics quality.</li>
+          <li>Performed exploratory data analysis on user datasets, identifying patterns that informed product feature recommendations.</li>
+          <li>Documented analytical workflows and created reusable Python scripts for maintainability and team knowledge sharing.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Expertise</div>
+      <h2 class="section-title">Skills & Capabilities</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="fade-up">
+        <div class="skill-group-title">// Product & Strategy</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Product Roadmapping (RICE/MoSCoW)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">PRD Creation & User Stories</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">User Research & A/B Testing</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">KPI Definition & Analytics</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Go-to-Market Strategy</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+      </div>
+      <div class="fade-up">
+        <div class="skill-group-title">// AI & Automation</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">N8N Workflow Automation</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Prompt Engineering & RAG</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Multi-Agent Orchestration</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">OpenAI & Gemini APIs</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">GenAI UX Design</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="fade-up">
+        <div class="skill-group-title">// Data & Engineering</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Python (Pandas, NumPy, Sklearn)</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">SQL</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Power BI & Tableau</span><span class="skill-level">Advanced</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">ETL Pipelines</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Machine Learning</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="fade-up">
+        <div class="skill-group-title">// Tools & Cloud</div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Figma (Wireframing & Prototyping)</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">AWS (EC2, S3, VPC, IAM)</span><span class="skill-level">Intermediate</span></div><div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Git / GitHub</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Agile / Scrum / JIRA</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-row"><span class="skill-name">Linux & Shell Scripting</span><span class="skill-level">Proficient</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Credentials</div>
+      <h2 class="section-title">Certifications & Training</h2>
+    </div>
+    <div class="certs-grid">
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">Coursera &nbsp;·&nbsp; Microsoft</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Microsoft Power BI Data Analyst Professional Certificate</div>
+        <div class="cert-date">Completed Jan 2026</div>
+        <div class="cert-desc">8-course professional certificate covering Power BI, DAX, ETL, data modelling, and PL-300 exam preparation.</div>
+        <a href="https://coursera.org/verify/professional-cert/CRQLEVPD3G34" target="_blank" class="cert-link">View Certificate ↗</a>
+      </div>
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">IIT Patna (by Masai)</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Product Management & Agentic AI</div>
+        <div class="cert-date">Completed Feb 2026</div>
+        <div class="cert-desc">Comprehensive PM training covering product strategy, user research, PRD creation, and agentic AI systems.</div>
+      </div>
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">Forage &nbsp;·&nbsp; Accenture North America</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Data Analytics & Visualisation Job Simulation</div>
+        <div class="cert-date">Completed Sep 2024</div>
+        <div class="cert-desc">Practical tasks in data cleaning, modelling, visualisation, and client presentation storytelling.</div>
+        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_f49KoGZJYYBRjaocg_1726333708052_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate ↗</a>
+      </div>
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">Cisco</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Data Analytics Essentials</div>
+        <div class="cert-date">Completed Sep 2024</div>
+        <div class="cert-desc">Foundational data analytics concepts, tools, and techniques for business decision-making.</div>
+        <a href="https://www.credly.com/badges/5b6c1365-9f7a-401b-bd07-9e9b1984e409/linked_in_profile" target="_blank" class="cert-link">View on Credly ↗</a>
+      </div>
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">Udemy</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Learn Red Hat Linux & CentOS</div>
+        <div class="cert-date">Completed Jul 2025</div>
+        <div class="cert-desc">Linux system administration, command line operations, and server management.</div>
+        <a href="https://media.licdn.com/dms/document/media/v2/D562DAQElKqxIL8Rk8g/profile-treasury-document-pdf-analyzed/B56ZgSCfvOHQAg-/0/1752649302755?e=1770249600&v=beta&t=DgBPjoN-4G9HNob-Hm-tPpP_xPJJVpn1EMYORAVMvr8" target="_blank" class="cert-link">View Certificate ↗</a>
+      </div>
+
+      <div class="cert-card fade-up">
+        <div class="cert-issuer">Infosys Springboard</div>
+        <span class="cert-badge badge-done">✓ Completed</span>
+        <div class="cert-name">Artificial Intelligence Foundation</div>
+        <div class="cert-date">Completed Jan 2024</div>
+        <div class="cert-desc">Foundational AI concepts, machine learning basics, and AI applications in business contexts.</div>
+        <a href="https://verify.onwingspan.com" target="_blank" class="cert-link">Verify Certificate ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <div class="section-kicker">Contact</div>
+    <h2 class="section-title">Let's build<br/><em style="font-family:var(--serif);font-style:italic">something together.</em></h2>
+    <p class="contact-body" style="margin-top:1rem;">
+      Open to product management roles, AI product opportunities, and collaborations at the intersection of data, AI, and impactful user experiences.
+    </p>
+  </div>
+  <div class="contact-right">
+    <a href="mailto:bnpooja12@gmail.com" class="contact-link">
+      <span class="contact-link-icon">✉</span>
+      <div class="contact-link-text">
+        <span class="contact-link-label">Email</span>
+        bnpooja12@gmail.com
+      </div>
+    </a>
+    <a href="https://linkedin.com/in/b-n-pooja-13279b280/" target="_blank" class="contact-link">
+      <span class="contact-link-icon">in</span>
+      <div class="contact-link-text">
+        <span class="contact-link-label">LinkedIn</span>
+        b-n-pooja-13279b280
+      </div>
+    </a>
+    <a href="tel:+917892193035" class="contact-link">
+      <span class="contact-link-icon">☎</span>
+      <div class="contact-link-text">
+        <span class="contact-link-label">Phone</span>
+        +91 78921 93035
+      </div>
+    </a>
+    <a href="https://github.com/poohx1224-bn" target="_blank" class="contact-link">
+      <span class="contact-link-icon">⌥</span>
+      <div class="contact-link-text">
+        <span class="contact-link-label">GitHub</span>
+        github.com/poohx1224-bn
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2025 BN Pooja &nbsp;·&nbsp; Product Manager &nbsp;·&nbsp; Agentic AI Specialist &nbsp;·&nbsp; Bengaluru, India
+</footer>
+
+<script>
+// Scroll-triggered fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Skill bars animate on scroll
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        bar.style.transition = 'width 0.8s ease';
+        setTimeout(() => bar.style.width = w, 100);
+      });
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skills-grid > div').forEach(el => barObserver.observe(el));
+</script>
+</body>
+</html>

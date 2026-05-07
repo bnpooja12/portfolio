@@ -1,7 +1,7 @@
 # Hi, I'm BN Pooja 👋
 ### Product Manager × Agentic AI Builder · Bengaluru, India
 
-Portfolio: 
+Portfolio: https://bnpooja12.github.io/portfolio/
 
 > *"I don't just write PRDs — I build the product."*
 
